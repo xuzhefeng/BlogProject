@@ -1,0 +1,100 @@
+{% load staticfiles %}
+{% load notifications_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/commons.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/plugins/fontawesome/css/all.css">
+    <link rel="shortcut icon" href="/static/imgs/favicon.ico">
+
+    {% block css %}{% endblock %}
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <div class="pg-head">
+        <nav class="navbar navbar-default navbar-fixed-top " role="navigation" >
+            <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'home' %}">许哲锋的博客</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="{% block nav-home-active %}{% endblock %}">
+                            <a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span>  首页</a>
+                        </li>
+                        <li class="{% block nav-blog-active %}{% endblock %}">
+                            <a href="{% url 'blog_list' %}"><span class="glyphicon glyphicon-book"></span>  我的博客</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            {% notifications_unread as unread_count %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    你好, {{ user.get_nickname_or_username }}
+                                    {% if unread_count > 0 %}
+                                        <span class="badge unread-count live_notify_badge ">{{ unread_count }}</span>
+                                    {% endif %}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'user_info' %}">个人资料</a></li>
+                                    {% if user.is_staff %}
+                                        <li><a href="{% url 'admin:index' %}">后台管理</a></li>
+                                    {% endif %}
+                                    <li>
+                                        <a href="{% url 'my_notifications' %}">
+                                            消息中心
+                                            {% if unread_count > 0 %}
+                                                <span class="badge unread-count live_notify_badge">{{ unread_count }}</span>
+                                            {% endif %}
+                                        </a>
+                                    </li>
+                                    <li><a href="{% url 'logout' %}">注销</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li><a href={% url 'login' %}?from={{ request.get_full_path }}>登录</a></li>
+                            <li><a href={% url 'register' %}?from={{ request.get_full_path }}>注册</a></li>
+                        {% endif %}
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <div class="pg-body">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="pg-footer">
+        <div class="website-info">
+            <p>粤ICP备XXX号-1 Copyright©2019 xzfblog.com 版权所有</p>
+            <p>意见反馈或联系我（475308964@qq.com）</p>
+        </div>
+    </div>
+
+
+<script type="text/javascript" src="/static/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="/static/plugins/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="{% static 'notifications/notify.js' %}" ></script>
+{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}
+{% block js %}{% endblock %}
+
+</body>
+</html>

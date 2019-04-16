@@ -1,0 +1,22 @@
+h3.home-content{
+    text-align: center;
+    margin: 20px 0;
+}
+div#container{
+    height:300px;
+    margin: 0 auto;
+    min-width: 200px;
+    max-width: 500px;
+
+}
+div.hot-data{
+
+}
+div.hot-data .hot-data-titile{
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 0.5em;
+    margin-top: 1em;
+
+}
+div.hot-data .hot-data-list{
+}

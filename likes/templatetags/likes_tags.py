@@ -1,0 +1,26 @@
+from django import template
+from ..models import LikeCount, LikeRecord
+from django.contrib.contenttypes.models import ContentType
+register = template.Library()
+
+@register.simple_tag
+def get_like_count(obj):
+    content_type = ContentType.objects.get_for_model(obj)
+    like_count, created = LikeCount.objects.get_or_create(content_type=content_type, object_id=obj.id)
+    return like_count.liked_num
+
+@register.simple_tag(takes_context=True)
+def get_like_status(context,obj):
+    user = context['user']
+    if not user.is_authenticated:
+        return ''
+    content_type = ContentType.objects.get_for_model(obj)
+    if LikeRecord.objects.filter(content_type=content_type, object_id=obj.id, user=user).exists():
+        return 'active'
+    else:
+        return ''
+
+@register.simple_tag(takes_context=True)
+def get_content_type(context,obj):
+    content_type = ContentType.objects.get_for_model(obj)
+    return content_type.model
