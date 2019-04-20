@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load comment_tags %}
 {% load likes_tags %}
 {% block title %}{{ blog.title }}{% endblock %}
-{% block css %}<link rel="stylesheet" href="/static/css/blog.css">{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/blog.css' %}">{% endblock %}
 {% block nav-blog-active %}active{% endblock %}
 {# 页面内容 #}
 {% block content %}
@@ -146,8 +147,8 @@
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript" src="/static/ckeditor/ckeditor-init.js"></script>
-    <script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
     <script type="text/javascript">
 
         $('#comment_form').submit(function () {

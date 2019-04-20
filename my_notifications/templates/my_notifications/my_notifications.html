@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
-{% block title %}我的网站|我的消息{% endblock %}
+{% block title %}许哲锋的博客 | 我的消息{% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="/static/my_notifications/my_notifications.css">
+    <link rel="stylesheet" href="{% static 'my_notifications/my_notifications.css' %}">
 {% endblock %}
 {% block nav-home-active %}active{% endblock %}
 

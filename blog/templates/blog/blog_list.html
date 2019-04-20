@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load comment_tags %}
 {% load likes_tags %}
+
 {% block title %}许哲锋的博客{% endblock %}
-{% block css %}<link rel="stylesheet" href="/static/css/blog.css">{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/blog.css' %}">{% endblock %}
 {% block nav-blog-active %}active{% endblock %}
 
 {# 页面内容 #}

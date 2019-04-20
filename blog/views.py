@@ -39,7 +39,6 @@ def blog_detail(request,blog_id):
     blog = Blog.objects.filter(id=blog_id).first()
     # blog = Blog.objects.get(id=blog_id)
     blog_content_type = ContentType.objects.get_for_model(blog)
-    print('blog_detail-->',blog_content_type,type(blog_content_type))
     read_cookie_key = read_statistics_once_read(request, blog)
 
     content = {}

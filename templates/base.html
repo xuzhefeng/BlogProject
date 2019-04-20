@@ -5,11 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/commons.css">
-    <link rel="stylesheet" href="/static/css/base.css">
-    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/plugins/fontawesome/css/all.css">
-    <link rel="shortcut icon" href="/static/imgs/favicon.ico">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'imgs/favicon.ico' %}">
 
     {% block css %}{% endblock %}
     <style>
@@ -101,8 +99,8 @@
     </div>
 
 
-<script type="text/javascript" src="/static/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="/static/plugins/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'notifications/notify.js' %}" ></script>
  <script type="text/javascript">
     //底部栏置底
