@@ -5,6 +5,7 @@
 
 body{
     margin-top: 70px!important;
+    min-height: 420px;
 }
 /*.pg-head a{*/
     /*display: inline-block;*/
@@ -26,6 +27,8 @@ div.panel-heading.login,div.panel-heading.regiser{
 div.pg-footer{
     background-color: #e7e7e7;
     margin-top: 3em;
+    margin-bottom: 0em;
+
 }
 div.website-info{
     text-align: center;
@@ -34,4 +37,9 @@ div.website-info{
 }
 div.website-info p{
     margin-bottom: 0em;
+}
+.page-bottom{
+    position:absolute;  /*或者fixed*/
+    bottom:0;
+    width: 100%;
 }

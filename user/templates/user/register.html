@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}我的网站|注册{% endblock %}
+{% block title %}许哲锋的博客 | 注册{% endblock %}
 {% block css %}<link rel="stylesheet" href="/static/css/home.css">{% endblock %}
 
 {% block nav-home-active %}active{% endblock %}
@@ -34,6 +34,11 @@
                     <script type="text/javascript">
                         window.location.href = '/';
                     </script>
+                {% endif %}
+                {% if request.GET.from %}
+                    <a href={% url 'login' %}?from={{ request.GET.from }}>已注册账号,请登录 &gt;&gt;</a>
+                {% else %}
+                    <a href={% url 'login' %}?from={{ request.get_full_path }}>已注册账号,请登录 &gt;&gt;</a>
                 {% endif %}
             </div>
         </div>

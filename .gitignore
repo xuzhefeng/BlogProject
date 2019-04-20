@@ -1,4 +1,6 @@
 db.sqlite3
 data.json
-setting.py
-__pycache__/
+__pycache__
+data.sql
+static_collected/
+
