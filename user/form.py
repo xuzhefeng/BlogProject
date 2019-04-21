@@ -51,13 +51,6 @@ class RegisterForm(forms.Form):
         if 'request' in kwargs:
             self.request = kwargs.pop('request')
         super(RegisterForm, self).__init__(*args, **kwargs)
-    def clean(self):
-        # 判断验证码
-        code = self.request.session.get('register_code','').lower()
-        verification_code = self.cleaned_data.get('verification_code','').lower()
-        if not (code != '' and  verification_code == code):
-            raise forms.ValidationError('验证码不正确')
-        return self.cleaned_data
     def clean_username(self):
         username = self.cleaned_data['username']
         #判断用户名是否存在
@@ -78,7 +71,13 @@ class RegisterForm(forms.Form):
         if password != password2:
             raise forms.ValidationError('两次密码输入不一致')
         return password2
-
+    def clean_verification_code(self):
+        # 判断验证码
+        code = self.request.session.get('register_code', '').lower()
+        verification_code = self.cleaned_data.get('verification_code','').lower()
+        if not (code != '' and  verification_code == code):
+            raise forms.ValidationError('验证码不正确')
+        return verification_code
 class ChangeNicknameForm(forms.Form):
     new_nickname = forms.CharField(
         label='昵称',
@@ -121,6 +120,7 @@ class BindEmailForm(forms.Form):
         if 'request' in kwargs:
             self.request = kwargs.pop('request')
         super(BindEmailForm, self).__init__(*args, **kwargs)
+
     def clean(self):
         # 判断用户是否登录
         if self.request.user.is_authenticated:
@@ -130,7 +130,7 @@ class BindEmailForm(forms.Form):
         #判断用户是否已绑定邮箱
         if self.request.user.email != '':
             raise forms.ValidationError('用户已绑定邮箱')
-
+        return self.cleaned_data
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -139,17 +139,11 @@ class BindEmailForm(forms.Form):
         return email
     def clean_verification_code(self):
         # 判断验证码
-        code = self.request.session.get('register_code','').lower()
+        code = self.request.session.get('bind_email_code', '').lower()
         verification_code = self.cleaned_data.get('verification_code','').lower()
         if not (code != '' and  verification_code == code):
             raise forms.ValidationError('验证码不正确')
         return verification_code
-    #
-    # def clean_verification_code(self):
-    #     verification_code = self.cleaned_data.get('verification_code', '')
-    #     if verification_code == '':
-    #         raise forms.ValidationError('11验证码不能为空')
-    #     return verification_code
 
 class ChangePasswordForm(forms.Form):
     old_password = forms.CharField(label='旧的密码',
