@@ -8,43 +8,40 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col-xs-4   col-xs-offset-4">
-                {% if user.is_authenticated %}
-                    <span>已登录,跳转到首页</span>
-                    <script type="text/javascript">
-                        window.location.href = '/';
-                    </script>
-                {% else %}
-                    <div class="panel panel-default">
-                    <div class="panel-heading login">登录</div>
-                    <div class="panel-body">
-                        <form action='' method='POST'>
-                            {% csrf_token %}
-                            {% for field in login_form %}
-                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <div style="margin: 0 auto;width: 350px">
+            {% if user.is_authenticated %}
+                <span>已登录,跳转到首页</span>
+                <script type="text/javascript">
+                    window.location.href = '/';
+                </script>
+            {% else %}
+                <div class="panel panel-default">
+                <div class="panel-heading login">登录</div>
+                <div class="panel-body">
+                    <form action='' method='POST'>
+                        {% csrf_token %}
+                        {% for field in login_form %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
 {#                                {{ field.label_tag }} 自动生成label标签#}
-                                {{ field }}
-                                <p class="text-danger">{{ field.errors.as_text }}</p>
-                            {% endfor %}
-                            <span class="text-danger">{{ login_form.non_field_errors }}</span>
-                            <div class="clearfix"></div>
-                            <a href="{% url 'forgot_password' %}">忘记密码?</a>
-                            <input class="btn btn-primary pull-right" type="submit" value="登录">
-                        </form>
-                    </div>
-
+                            {{ field }}
+                            <p class="text-danger">{{ field.errors.as_text }}</p>
+                        {% endfor %}
+                        <span class="text-danger">{{ login_form.non_field_errors }}</span>
+                        <div class="clearfix"></div>
+                        <a href="{% url 'forgot_password' %}">忘记密码?</a>
+                        <input class="btn btn-primary pull-right" type="submit" value="登录">
+                    </form>
                 </div>
-                {% endif %}
-                {% if request.GET.from %}
-                    <a href={% url 'register' %}?from={{ request.GET.from }}>未注册?请前往注册 &gt;&gt;</a>
-                {% else %}
-                    <a href={% url 'register' %}?from={{ request.get_full_path }}>未注册?请前往注册 &gt;&gt;</a>
-                {% endif %}
 
             </div>
+            {% endif %}
+            {% if request.GET.from %}
+                <a href={% url 'register' %}?from={{ request.GET.from }}>未注册?请前往注册 &gt;&gt;</a>
+            {% else %}
+                <a href={% url 'register' %}?from={{ request.get_full_path }}>未注册?请前往注册 &gt;&gt;</a>
+            {% endif %}
+
         </div>
-    </div>
 
 
 

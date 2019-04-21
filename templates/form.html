@@ -8,31 +8,29 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col-xs-4   col-xs-offset-4">
-                <div class="panel panel-default">
-                <div class="panel-heading login">{{ form_title }}</div>
-                <div class="panel-body">
-                    <form action='' method='POST' >
-                        {% csrf_token %}
-                        {% for field in form %}
-                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                            {{ field }}
-                            <p class="text-danger">{{ field.errors.as_text }}</p>
+        <div style="margin: 0 auto;width: 350px">
+            <div class="panel panel-default">
+            <div class="panel-heading login">{{ form_title }}</div>
+            <div class="panel-body">
+                <form action='' method='POST' >
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        <p class="text-danger">{{ field.errors.as_text }}</p>
 
-                        {% endfor %}
-                        <span id="tip" class="text-danger">{{ form.non_field_errors }}</span>
-                        <div class="clearfix"></div>
-                        <div  class="pull-left">
-                            {% block other_buttons %}{% endblock %}
-                        </div>
-                        <div class="pull-right">
-                            <input class="btn btn-primary" type="submit" value="{{ submit_text }}">
-                            <button class="btn btn-default" onclick="window.location.href='{{ return_back_url }}'">返回</button>
-                        </div>
-                    </form>
-                </div>
-                </div>
+                    {% endfor %}
+                    <span id="tip" class="text-danger">{{ form.non_field_errors }}</span>
+                    <div class="clearfix"></div>
+                    <div  class="pull-left">
+                        {% block other_buttons %}{% endblock %}
+                    </div>
+                    <div class="pull-right">
+                        <input class="btn btn-primary" type="submit" value="{{ submit_text }}">
+                        <button class="btn btn-default" onclick="window.location.href='{{ return_back_url }}'">返回</button>
+                    </div>
+                </form>
+            </div>
             </div>
         </div>
     </div>
