@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin-top: 70px!important;
+    min-height: 420px;
+}
+/*.pg-head a{*/
+    /*display: inline-block;*/
+/*}*/
+a{
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+}
+
+
+.search-form button[type="submit"]{
+    border: none;
+    background: none;
+    position: absolute;
+    right: 20px;
+    top: 32%;
+
+}
+
+div.panel-heading.login,div.panel-heading.regiser{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.unread-count{
+    background-color: red!important;
+}
+div.pg-footer{
+    background-color: #e7e7e7;
+    margin-top: 3em;
+    margin-bottom: 0em;
+
+}
+div.website-info{
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+div.website-info p{
+    margin-bottom: 0em;
+}
+.page-bottom{
+    position:absolute;  /*或者fixed*/
+    bottom:0;
+    width: 100%;
+}
