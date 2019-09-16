@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogproject_db',
+        'NAME': '',
         'USER': 'xzf',
         'PASSWORD': os.environ['DATABASE_PASSWORD'],
         'HOST': 'localhost',

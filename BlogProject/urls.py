@@ -21,6 +21,7 @@ from BlogProject import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('search/', views.search, name="search"),
     path('ckeditor', include('ckeditor_uploader.urls')),
     path('blog/', include('blog.urls')),
     path('comment/', include('comment.urls')),

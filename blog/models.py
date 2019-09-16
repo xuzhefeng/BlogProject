@@ -5,6 +5,7 @@ from django.urls import reverse
 # from django.db.models.fields import exceptions
 from ckeditor_uploader.fields import RichTextUploadingField
 from read_statistics.models import ReadNumExpandMethod,ReadDetail
+
 class BlogType(models.Model):
     name = models.CharField(max_length=32)
 
@@ -14,7 +15,7 @@ class BlogType(models.Model):
     def __str__(self):
         return self.name
 
-class Blog(models.Model,ReadNumExpandMethod):
+class Blog(models.Model, ReadNumExpandMethod):
     title = models.CharField(max_length=64)
     blog_type = models.ForeignKey(BlogType,on_delete=models.CASCADE)
     content = RichTextUploadingField()

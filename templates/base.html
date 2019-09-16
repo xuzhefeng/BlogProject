@@ -49,9 +49,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     你好, {{ user.get_nickname_or_username }}
-                                    {% if unread_count > 0 %}
-                                        <span class="badge unread-count live_notify_badge ">{{ unread_count }}</span>
-                                    {% endif %}
+                                    <span class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -61,10 +59,7 @@
                                     {% endif %}
                                     <li>
                                         <a href="{% url 'my_notifications' %}">
-                                            消息中心
-                                            {% if unread_count > 0 %}
-                                                <span class="badge unread-count live_notify_badge">{{ unread_count }}</span>
-                                            {% endif %}
+                                            消息中心 <span class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span>
                                         </a>
                                     </li>
                                     <li><a href="{% url 'logout' %}">注销</a></li>
@@ -86,6 +81,14 @@
                                 {% endif %}
                             </li>
                         {% endif %}
+                            <li>
+                                <form class="navbar-form navbar-left search-form" action="{% url 'search' %}">
+                                    <div class="form-group">
+                                        <input type="text" name="wd" class="form-control" placeholder="搜索博文">
+                                    </div>
+                                    <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                                </form>
+                            </li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -105,6 +108,7 @@
 <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'notifications/notify.js' %}" ></script>
+
  <script type="text/javascript">
     //底部栏置底
     //窗体改变大小事件
@@ -135,9 +139,16 @@
     });
     //页面加载时，模拟触发一下resize事件
     $(window).trigger('resize');
+    //自定义实时获取未读消息
+    function my_special_notification_callback(data) {
+        unread_count = data['unread_count'];
+        if(unread_count == 0){
+            unread_count = '';
+        }
+        $('.live_notify_badge').text(unread_count);
+    }
 </script>
-
-{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}
+{% register_notify_callbacks callbacks='my_special_notification_callback' %}
 {% block js %}{% endblock %}
 
 </body>

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<title>{% block titile %}许哲锋的博客|搜索{% endblock %}</title>
+
+{% block css %}
+{% endblock %}
+
+{% block nav-home-active %}active{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                {% if search_words == '' %}
+                    <h3>你没有输入搜索内容!</h3>
+                    <p>你可以尝试输入内容,例如:Mysql</p>
+                {% else %}
+                    <h3>搜索"{{ search_words }}",找到{{ search_blogs_count }}个结果</h3>
+                    <hr>
+                    {% for blog in page_of_blogs %}
+                        <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+                        <p>{{ blog.content | striptags | truncatechars:100 }}</p>
+                    {% empty %}
+                        <h3>⊙_⊙ 找不到相关的文章~</h3>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row" style="text-align: center">
+            {% if page_of_blogs.has_previous %}
+                <a class="btn btn-default" href="{% url 'search' %}?wd={{ search_words }}&page={{ page_of_blogs.previous_page_number }}">上一页</a>
+            {% endif %}
+            {% if page_of_blogs.has_next %}
+                <a class="btn btn-default" href="{% url 'search' %}?wd={{ search_words }}&page={{ page_of_blogs.next_page_number }}">下一页</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <!-- 引入 highcharts.js -->
+    <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script>
+    // 图表配置
+        var options =  {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: {{ dates|safe }},
+            title: {
+                text: '最近七天阅读量变化'                // x 轴标题
+            },
+        tickmarkPlacement:'on',
+        },
+        yAxis: {
+            title: {
+                text: null                // y 轴标题不显示
+            },
+            labels:{enabled: false},    // y 轴数值不显示
+            gridLineDashStyle:'Dash',
+        },
+       series: [{                              // 数据列
+		name: '阅读量',                        // 数据列名
+		data: {{ read_nums }},                  // 数据
+        showInLegend: false                    // 设置为 false 即为不显示在图例中
+	    }],
+        credits: {
+            // enabled:true,                    // 默认值，如果想去掉版权信息，设置为false即可
+            text: '许哲锋的博客',             // 显示的文字
+            href: 'http://127.0.0.1:8000/',      // 链接地址
+        },
+    };
+        // 图表初始化函数
+        var chart = Highcharts.chart('container', options);
+
+    </script>
+{% endblock %}

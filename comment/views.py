@@ -1,11 +1,10 @@
-
 from django.contrib.contenttypes.models import ContentType
 from comment.models import Comment
 from comment.form import CommentForm
 from django.http import JsonResponse
+
 def update_comment(request):
     data = {}
-    refer = request.META['HTTP_REFERER']
     comment_form = CommentForm(request.POST, user=request.user)
     if comment_form.is_valid():
         # 检查通过，保存数据
@@ -28,7 +27,7 @@ def update_comment(request):
         data['username'] = comment.user.get_nickname_or_username()
         data['comment_time'] = comment.comment_time.strftime('%Y-%m-%d %H:%M:%S')
         data['text'] = comment.text
-        data['reply_to'] = comment.reply_to.username if parent else None
+        data['reply_to'] = comment.reply_to.get_nickname_or_username() if parent else None
         data['id'] = comment.id
         data['root_id'] = comment.root.id if parent else None
         data['content_type'] = ContentType.objects.get_for_model(comment).model

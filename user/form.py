@@ -164,12 +164,19 @@ class ChangePasswordForm(forms.Form):
         if 'user' in kwargs:
             self.user = kwargs.pop('user')
         super(ChangePasswordForm,self).__init__(*args, **kwargs)
-    def clean_old_password(self):
-        # 验证旧的密码是否正确
+
+    def clean(self):
+        # 判断用户是否登录
+        if not self.user.is_authenticated:
+            raise forms.ValidationError('用户未登录')
+
+        #判断旧密码是否正确
         old_password = self.cleaned_data['old_password']
         if not self.user.check_password(old_password):
-            raise forms.ValidationError('旧的密码不正确')
-        return old_password
+            raise forms.ValidationError('旧密码不正确')
+
+        return self.cleaned_data
+
     def clean_new_password2(self):
         new_password1 = self.cleaned_data['new_password1']
         new_password2 = self.cleaned_data['new_password2']
@@ -220,3 +227,5 @@ class ForgotPasswordForm(forms.Form):
         if not (code != '' and verification_code == code):
             raise forms.ValidationError('验证码不正确')
         return verification_code
+
+

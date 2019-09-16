@@ -83,7 +83,7 @@ def change_nickname(request):
     content['form_title'] = '设置昵称'
     content['submit_text'] = '提交'
     content['return_back_url'] = redirect_to
-    return render(request, 'form.html', content)
+    return render(request, 'user/form.html', content)
 
 def bind_email(request):
     redirect_to = request.GET.get('from', reverse('home'))
@@ -122,7 +122,7 @@ def change_password(request):
     content['form_title'] = '修改密码'
     content['submit_text'] = '提交'
     content['return_back_url'] = redirect_to
-    return render(request, 'form.html', content)
+    return render(request, 'user/form.html', content)
 def forgot_password(request):
     redirect_to = request.GET.get('from', reverse('home'))
     if request.method == 'POST':

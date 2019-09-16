@@ -15,6 +15,17 @@ a{
 ul {
     list-style-type: none;
 }
+
+
+.search-form button[type="submit"]{
+    border: none;
+    background: none;
+    position: absolute;
+    right: 20px;
+    top: 32%;
+
+}
+
 div.panel-heading.login,div.panel-heading.regiser{
     font-size: 20px;
     font-weight: bold;

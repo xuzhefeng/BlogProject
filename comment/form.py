@@ -42,6 +42,7 @@ class CommentForm(forms.Form):
             raise forms.ValidationError("评论目标不存在")
 
         return self.cleaned_data
+
     def clean_reply_comment_id(self):
         reply_comment_id = self.cleaned_data['reply_comment_id']
         if reply_comment_id < 0:

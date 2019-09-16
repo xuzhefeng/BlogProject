@@ -38,6 +38,7 @@ def blog_list(request):
 def blog_detail(request,blog_id):
     blog = Blog.objects.filter(id=blog_id).first()
     # blog = Blog.objects.get(id=blog_id)
+    # blog = get_object_or_404(Blog, id=blog_id)
     blog_content_type = ContentType.objects.get_for_model(blog)
     read_cookie_key = read_statistics_once_read(request, blog)
 
