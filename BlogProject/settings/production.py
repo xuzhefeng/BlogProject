@@ -48,7 +48,7 @@ EMAIL_HOST_USER = '475308964@qq.com'
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']  # 授权码
 EMAIL_SUBJECT_PREFIX = '[许哲锋的博客] '
 EMAIL_USE_SSL = True  # 与SMTP服务器通信时，启动SSL链接(安全链接)
-
+DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER  #设置发件人
 
 ADMINS = (
     ('admin', '475308964@qq.com'),
