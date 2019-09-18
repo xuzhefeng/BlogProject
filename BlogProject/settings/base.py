@@ -142,11 +142,20 @@ CKEDITOR_CONFIGS = {
 EACH_PAGE_BLOGS_NUMBER = 7 #每页显示7条数据
 
 #缓存设置
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'my_cache_table',
+#     }
+# }
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'my_cache_table',
-    }
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis:127.0.0.1:6379',
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
 }
 
 # Django-notification-hp设置

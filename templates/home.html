@@ -68,9 +68,8 @@
                 <ul class="hot-data-list">
                     {% for hot_data in hot_data_for_7_days %}
                         <li><a href="{% url 'blog_detail' hot_data.id %}">{{ hot_data.title }}</a>({{ hot_data.read_num_sum }})</li>
-
                     {% empty %}
-                        <li>昨天暂时没有热门博客</li>
+                        <li>过去一周暂时没有热门博客</li>
                     {% endfor %}
                 </ul>
             </div>

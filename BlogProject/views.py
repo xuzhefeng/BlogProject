@@ -16,7 +16,9 @@ def home(request):
     # 获取7天热门博客的缓存数据
     hot_data_for_7_days = cache.get('hot_data_for_7_days')
     if hot_data_for_7_days is None:
+        # 不存在，则获取数据，并写入缓存
         hot_data_for_7_days = get_7days_hot_data()
+        # 写入缓存
         cache.set('hot_data_for_7_days', hot_data_for_7_days, 3600)
     content = {}
     content['dates'] = dates
