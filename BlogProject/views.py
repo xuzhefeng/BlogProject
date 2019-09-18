@@ -9,9 +9,19 @@ from blog.models import Blog
 def home(request):
     blog_content_type = ContentType.objects.get_for_model(Blog)
     # blog = Blog.objects.get(id=blog_id)
-    dates, read_nums = get_seven_days_read_data(blog_content_type)
     today_hot_data = get_today_hot_data(blog_content_type)
     yesterday_hot_data = get_yesterday_hot_data(blog_content_type)
+
+    # 获取7天阅读量的缓存数据
+    seven_days_read_data = cache.get('seven_days_read_data')
+    if seven_days_read_data is None:
+        # 不存在，则获取数据，并写入缓存
+        seven_days_read_data = get_seven_days_read_data(blog_content_type)
+        # 写入缓存
+        cache.set('seven_days_read_data', seven_days_read_data, 3600)
+
+    dates = seven_days_read_data[0]
+    read_nums = seven_days_read_data[1]
 
     # 获取7天热门博客的缓存数据
     hot_data_for_7_days = cache.get('hot_data_for_7_days')
