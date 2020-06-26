@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a994f8a-db0d-448a-8b79-88ead3f7d965" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BlogProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BlogProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2a994f8a-db0d-448a-8b79-88ead3f7d965" name="Default Changelist" comment="修改Dockerfile文件">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +43,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1bJ9WWye5UiNxfBXX0ishnZqFov" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -396,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593157231795</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改Dockerfile文件">
+      <created>1593157748043</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593157748043</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -416,26 +418,35 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交Dockerfile文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交Dockerfile文件" />
+    <MESSAGE value="修改Dockerfile文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改Dockerfile文件" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="365" y="31" key="CommitChangelistDialog2" timestamp="1593157231420">
+    <state x="365" y="31" key="CommitChangelistDialog2" timestamp="1593157814350">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state x="365" y="31" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1593157231420" />
+    <state x="365" y="31" key="CommitChangelistDialog2/0.23.1440.814@0.23.1440.814" timestamp="1593157814350" />
+    <state x="503" y="146" key="RollbackChangesDialog" timestamp="1593157799075">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="503" y="146" key="RollbackChangesDialog/0.23.1440.814@0.23.1440.814" timestamp="1593157799075" />
     <state x="229" y="69" key="SettingsEditor" timestamp="1588339415460">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="229" y="69" key="SettingsEditor/0.23.1440.814@0.23.1440.814" timestamp="1588339415460" />
-    <state x="320" y="169" key="Vcs.Push.Dialog.v2" timestamp="1593157235829">
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2" timestamp="1593157750510">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state x="320" y="169" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1593157235829" />
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2/0.23.1440.814@0.23.1440.814" timestamp="1593157750510" />
     <state x="413" y="261" key="com.intellij.ide.util.TipDialog" timestamp="1589113462207">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
     <state x="413" y="261" key="com.intellij.ide.util.TipDialog/0.23.1440.812@0.23.1440.812" timestamp="1589113462207" />
     <state x="413" y="262" key="com.intellij.ide.util.TipDialog/0.23.1440.814@0.23.1440.814" timestamp="1588339375179" />
+    <state x="525" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593157772007">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="525" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.814@0.23.1440.814" timestamp="1593157772007" />
     <state x="400" y="186" width="639" height="486" key="find.popup" timestamp="1593093146142">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
