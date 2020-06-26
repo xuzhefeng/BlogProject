@@ -27,5 +27,5 @@ RUN pip3 install --upgrade pip \
 EXPOSE 8001
 #设置环境变量
 # ENV SECRET_KEY ko31n8oac@=****
-ENV EMAIL_HOST_PASSWORD=****
-# ENV DATABASE_PASSWORD=****
+# ENV EMAIL_HOST_PASSWORD=****
+ENV DATABASE_PASSWORD=****
