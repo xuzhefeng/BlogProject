@@ -43,6 +43,8 @@ class Blog(models.Model, ReadNumExpandMethod):
     def __str__(self):
         return "<Blog:%s>" % self.title
 
+
+
 '''
 class ReadNum(models.Model):
     read_num = models.IntegerField(default=0)
